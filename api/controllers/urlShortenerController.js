@@ -2,6 +2,8 @@
 
 var mongoose = require('mongoose'),
 Url = mongoose.model('url');
+User = mongoose.model('user');
+
 
 exports.list_all_urls = function(req, res) {
   Url.find({}, function(err, Url) {
@@ -11,16 +13,19 @@ exports.list_all_urls = function(req, res) {
   });
 };
 
-
-
-
 exports.create_a_url = function(req, res) {
-  var new_Url = new Url(req.body);
-  new_Url.save(function(err, Url) {
-    if (err)
-      res.send(err);
-    res.json(Url);
-  });
+    Url.findOne( req.params, function(err, urlByUser) {
+        if (err)
+            res.send(err);
+        else
+            var new_Url = new Url(req.body+req.params);
+            new_Url.save(function(err, Url) {
+            if (err)
+                res.send(err);
+            res.json(Url);
+            });
+    });
+  
 };
 
 

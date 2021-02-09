@@ -4,6 +4,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
 
 Url = require('./api/models/urlShortenerModel'), //created model loading here
+User = require('./api/models/userModel'),
 bodyParser = require('body-parser');
   
 // mongoose instance connection url connection
@@ -21,6 +22,7 @@ try {mongoose.connect("mongodb+srv://urladmin:12369874@cluster0.j2wu7.mongodb.ne
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 
 var routes = require('./api/routes/urlShortenerRoutes'); //importing route

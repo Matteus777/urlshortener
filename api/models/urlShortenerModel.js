@@ -4,10 +4,6 @@ var Schema = mongoose.Schema;
 
 
 var urlSchema = new Schema({
-  id: {
-    type: String,
-    required: true
-  },
   userId: {
     type: String,
   },
@@ -27,6 +23,8 @@ var urlSchema = new Schema({
       type: Number,
     }],
   }
+},{
+  versionKey: false
 });
 
 module.exports = mongoose.model('url', urlSchema);
