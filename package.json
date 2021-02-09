@@ -1,0 +1,26 @@
+{
+  "name": "urlshortener",
+  "version": "1.0.0",
+  "description": "URL Shortener API using Node.JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matteus777/urlshortener.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matteus777/urlshortener/issues"
+  },
+  "homepage": "https://github.com/Matteus777/urlshortener#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
