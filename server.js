@@ -10,7 +10,7 @@ bodyParser = require('body-parser');
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 try {mongoose.connect("mongodb+srv://urladmin:12369874@cluster0.j2wu7.mongodb.net/urlshortener?retryWrites=true&w=majority",
-{ useNewUrlParser: true, useUnifiedTopology: true },
+{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
 () => console.log(" Mongoose is connected")
     );
 
@@ -32,4 +32,4 @@ routes(app); //register the route
 app.listen(port);
 
 
-console.log('todo list RESTful API server started on: ' + port);
+

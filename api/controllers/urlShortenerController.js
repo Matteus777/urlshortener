@@ -14,21 +14,34 @@ exports.list_all_urls = function(req, res) {
 };
 
 exports.create_a_url = function(req, res) {
-    Url.findOne( req.params, function(err, urlByUser) {
-        if (err)
-            res.send(err);
-        else
-            var new_Url = new Url(req.body+req.params);
-            new_Url.save(function(err, Url) {
-            if (err)
-                res.send(err);
-            res.json(Url);
-            });
-    });
+  User.findOne({id: req.params.userId}, function(err, result) {
+    if (result){
+      var new_Url =new Url(req.body);
+      new_Url.save(function(err, Url) {
+        if (err){
+          res.send(err);
+        }else{
+          res.status(201).send(Url);
+        }
+      });
+    }else{
+      res.status(404).send({"Message: ":"User not found!"});
+    }
+   
   
+});
+// User.findOneAndUpdate({id: req.params.userId}, { $push: { urls: req.body.url  } }, {new: true, useFindAndModify:false}, function(err, Url) {
+//   if (err)
+//     res.send(err);
+//   res.json(Url);
+// });
 };
 
-
+exports.redirect = function(req, res){
+  Url.findOne({id:req.params.id},function(err,Url){
+    res.status(301).redirect(Url.url);
+  })
+}
 exports.read_a_url = function(req, res) {
   Url.findById(req.params.UrlId, function(err, Url) {
     if (err)

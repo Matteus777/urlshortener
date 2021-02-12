@@ -9,6 +9,8 @@ module.exports = function(app) {
     
     ;
 
+  app.route('/:id')
+    .get(urlController.redirect);
   //Inserts a new url in database
   app.route('/users/:userId/urls')
     .post(urlController.create_a_url);
@@ -35,7 +37,7 @@ module.exports = function(app) {
 
   //Deletes the user;
   app.route('/users/:userId')
-  .get(urlController.read_a_url);
+  .delete(userController.delete_a_user);
 
   
 };
